@@ -1,4 +1,5 @@
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.EventListener;
@@ -12,7 +13,7 @@ public class App {
     ConsoleEventLogger eventLogger;
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
 
         //app.client = new Client("1","John Smith");
@@ -20,6 +21,8 @@ public class App {
 
         app.logEvent("Come event for user 1");
         app.logEvent("Come event for user 2");
+
+        ctx.close();
     }
 
     void logEvent(String msg) {

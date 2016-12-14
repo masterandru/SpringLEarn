@@ -3,8 +3,8 @@
  * 13.12.2016
  */
 public class Client {
-    String id;
-    String fullName;
+    private String id;
+    private String fullName;
 
     public String getId() {
         return id;

@@ -19,15 +19,18 @@
 
     <bean id="cacheFileLogger" class="CacheFileEventLogger" destroy-method="destroy"/>
 
+    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+    <bean id="date" class="java.util.Date" factory-method="getJulianCalendar"/>
+
     <bean id="event" class="Event" scope="prototype">
         <constructor-arg>
             <bean class="java.util.Date"/>
+            <bean class="java.text.DateFormat"/>
         </constructor-arg>
 
     </bean>
 
-    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance">
 
-    </bean>
+
 
 </beans>

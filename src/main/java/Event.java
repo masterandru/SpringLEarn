@@ -1,4 +1,7 @@
+import javafx.scene.input.DataFormat;
+
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Random;
@@ -20,9 +23,13 @@ public class Event {
         this.date = date;
     }
 
+
+
     public Event() {
         Random random = new Random();
+        DateFormat dateFormat = new SimpleDateFormat();
         id = random.nextInt();
+        this.df = dateFormat;
         this.date = new Date();
     }
 

@@ -19,15 +19,23 @@ public class App {
         //app.client = new Client("1","John Smith");
         //app.eventLogger = new ConsoleEventLogger();
 
-        app.logEvent("Come event for user 1");
-        app.logEvent("Come event for user 2");
+        //app.logEvent("Come event for user 1");
+        //app.logEvent("Come event for user 2");
+
+        Event testEvent1 = (Event) ctx.getBean("event");
+        Event testEvent2 = (Event) ctx.getBean("event");
+        testEvent1.setMsg("Come event for user 1");
+        testEvent2.setMsg("Come event for user 2");
+
+        app.logEvent(testEvent1);
+        app.logEvent(testEvent1);
 
         ctx.close();
     }
 
-    void logEvent(String msg) {
-        String message = msg.replaceAll(client.getId(), client.getFullName());
-        eventLogger.logEvent(message);
+    void logEvent(Event event) {
+        //String message = msg.replaceAll(client.getId(), client.getFullName());
+        eventLogger.logEvent(event);
 
     }
 

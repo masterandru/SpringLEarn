@@ -5,8 +5,14 @@
 
 
 
-    <import resource="loggers.xml"/>
-    <import resource="others.xml"/>
+    <bean id="eventLogger" class="ConsoleEventLogger"/>
+
+    <bean id="fileLogger" class="FileEventLoger" init-method="init"/>
+
+    <bean id="cacheFileLogger" class="CacheFileEventLogger" destroy-method="destroy"/>
+
+
+
 
 
 

@@ -31,8 +31,9 @@ public class App {
         //testEvent1.setMsg("Come event for user 1");
         //testEvent2.setMsg("Come event for user 2");
 
-        app.logEvent(EventType.ERROR,"Come event for user 1\"");
-        app.logEvent(EventType.INFO,"Come event for user 2");
+        EventLogger defaultLogger = (CacheFileEventLogger) ctx.getBean("cacheFileEventLogger");
+        app.logEvent(EventType.ERROR, "Come event for user 1\"");
+        app.logEvent(EventType.INFO, "Come event for user 2");
         //app.logEvent(null,testEvent2);
 
         ctx.close();
@@ -44,28 +45,26 @@ public class App {
             logger = defaultLogger;
         }
         logger.logEvent(event);
-
-
     }
+
 
     public App(Client client, EventLogger eventLogger, Map<EventType, EventLogger> loggers) {
         this.client = client;
         this.loggers = loggers;
-
     }
 
 
     void logEvent(Event event) {
         //String message = msg.replaceAll(client.getId(), client.getFullName());
-        eventLogger.logEvent(event);
-
+        logger.logEvent(event);
     }
 
- /*
+
+/*
     public App(Client client, ConsoleEventLogger eventLogger, EventType eventType) {
         this.client = client;
         this.eventLogger = eventLogger;
-
-    }*/
+    }
+*/
 
 }

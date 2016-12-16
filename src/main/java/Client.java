@@ -23,4 +23,8 @@ public class Client {
     public void setGreating(String greating) {
         this.greating = greating;
     }
+
+    public String getGreating() {
+        return greating;
+    }
 }

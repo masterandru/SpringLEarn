@@ -5,14 +5,21 @@
 
 
 
-    <bean id="eventLogger" class="ConsoleEventLogger"/>
+    <bean id="consoleEventLogger" class="ConsoleEventLogger"/>
 
-    <bean id="fileLogger" class="FileEventLoger" init-method="init"/>
+    <bean id="fileEventLogger" class="FileEventLoger" init-method="init"/>
 
-    <bean id="cacheFileLogger" class="CacheFileEventLogger" destroy-method="destroy"/>
+    <bean id="cacheFileEventLogger" class="CacheFileEventLogger" destroy-method="destroy"/>\
 
+    <bean id="combineEventLogger" class="CombineEventLogger">
+    <constructor-arg>
+        <list>
+            <ref bean="consoleEventLogger"/>
+            <ref bean="fileEventLogger"/>
 
-
+        </list>
+    </constructor-arg>
+    </bean>
 
 
 
